@@ -2,6 +2,8 @@ import React from 'react';
 // import { makeStyles } from '@mui/styles';
 import Button from '@mui/material/Button';
 import { Wrapper, Content } from './style';
+import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../contexts/context';
 
 // const useStyles = makeStyles({
 //     wrapper: {
@@ -22,13 +24,21 @@ import { Wrapper, Content } from './style';
 // });
 
 const Home = () => {
+    const {
+        handleSubmit
+    } = useGlobalContext();
     // const classes = useStyles();
+    const navigate = useNavigate();
+    const btnClick = () => {
+        handleSubmit();
+        navigate('/questions');
+    }
     return (
         <Wrapper>
             <Content>
                 <h2>Who Am I?</h2>
                 <p>An in-depth personality test designed by psychologist</p>
-                <Button variant="contained">Get started</Button>
+                <Button variant="contained" onClick={() => { btnClick() }}>Get started</Button>
             </Content>
         </Wrapper>
     )
