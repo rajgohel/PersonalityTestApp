@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGlobalContext } from '../../contexts/context';
 import Modal from '../Modal/Modal';
-import { Wrapper, Option, NextBtn } from './style';
+import { Wrapper, Option, NextBtn, Loader } from './style';
 
 const Questions = () => {
     const {
@@ -13,23 +13,26 @@ const Questions = () => {
         checkAnswer,
     } = useGlobalContext();
     if (waiting) {
-        return <></>;
+        return <Loader />;
     }
     if (loading) {
-        return <></>;
+        return <Loader />;
     }
     const { question, incorrect_answers, correct_answer } = questions[index];
     let answers = [...incorrect_answers];
     const tempIndex = Math.floor(Math.random() * 4);
+    console.log(tempIndex);
     if (tempIndex === 3) {
+        console.log("in if");
         answers.push(correct_answer);
     } else {
+        console.log("in else");
         answers.push(answers[tempIndex]);
         answers[tempIndex] = correct_answer;
     }
     return (
         <Wrapper>
-             <Modal />
+            <Modal />
             <h2>{question}</h2>
             {answers.map((answer, index) => {
                 return (
@@ -43,7 +46,7 @@ const Questions = () => {
                     </Option>
                 );
             })}
-            <NextBtn className="next-question" onClick={nextQuestion}>
+            <NextBtn onClick={nextQuestion}>
                 next question
             </NextBtn>
         </Wrapper>

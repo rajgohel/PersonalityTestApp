@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     padding: 3rem;
 `;
 
-export const Option = styled.div`
+export const Option = styled.button`
     display: block;
     width: 50%;
     margin: 0.75rem auto;
@@ -45,4 +45,20 @@ export const NextBtn = styled.button`
     color: #222;
     transition: all 0.3s linear;
     cursor: pointer;
+`;
+
+export const Loader = styled.div`
+    @keyframes spinner {
+        to {
+        transform: rotate(360deg);
+        }
+    }
+    width: 6rem;
+    height: 6rem;
+    margin: 0 auto;
+    margin-top: 10rem;
+    border-radius: 50%;
+    border: 3px solid #ffecd2;
+    border-top-color: #fcb69f;
+    animation: spinner 0.6s linear infinite;
 `;
