@@ -50,11 +50,9 @@ const AppProvider = ({ children }) => {
     };
 
     const nextQuestion = () => {
-        console.log("index", index);
         setIndex((oldIndex) => {
             const index = oldIndex + 1;
             if (index > questions.length - 1) {
-                console.log("index if", index);
                 openModal();
                 return 0;
             } else {
