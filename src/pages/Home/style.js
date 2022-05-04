@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-const Content = styled.div`
+export const Content = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,5 +19,3 @@ const Content = styled.div`
     border-radius: 0.25rem;
     padding: 3rem;
 `;
-
-export { Wrapper, Content };

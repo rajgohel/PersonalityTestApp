@@ -20,7 +20,6 @@ const Questions = () => {
     }
     const { question, incorrect_answers, correct_answer } = questions[index];
     let answers = [...incorrect_answers];
-    console.log(questions);
     const tempIndex = Math.floor(Math.random() * 4);
     if (tempIndex === 3) {
         answers.push(correct_answer);

@@ -78,6 +78,7 @@ const AppProvider = ({ children }) => {
         setWaiting(true);
         setCorrect(0);
         setIsModalOpen(false);
+        handleSubmit();
     };
 
     const handleChange = (e) => {
