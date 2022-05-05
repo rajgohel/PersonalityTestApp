@@ -5,8 +5,7 @@ import { BASE_URL } from "../constants/apiConstants";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    const [waiting, setWaiting] = useState(true);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [questions, setQuestions] = useState([]);
     const [index, setIndex] = useState(0);
     const [correct, setCorrect] = useState(0);
@@ -14,22 +13,19 @@ const AppProvider = ({ children }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const fetchQuestions = async (url) => {
-        setLoading(true);
-        setWaiting(false);
         const response = await axios(url).catch((err) => console.log(err));
         if (response) {
             const data = response.data.results;
             if (data.length > 0) {
                 setQuestions(response.data.results);
                 setLoading(false);
-                setWaiting(false);
                 setError(false);
             } else {
-                setWaiting(true);
+                setLoading(true);
                 setError(true);
             }
         } else {
-            setWaiting(true);
+            setLoading(false);
         }
     };
 
@@ -57,7 +53,7 @@ const AppProvider = ({ children }) => {
     };
 
     const closeModal = () => {
-        setWaiting(true);
+        setLoading(false);
         setCorrect(0);
         setIsModalOpen(false);
         handleSubmit();
@@ -70,7 +66,6 @@ const AppProvider = ({ children }) => {
     return (
         <AppContext.Provider
             value={{
-                waiting,
                 loading,
                 questions,
                 index,

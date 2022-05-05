@@ -5,28 +5,22 @@ import { Wrapper, Option, NextBtn, Loader } from './style';
 
 const Questions = () => {
     const {
-        waiting,
         loading,
         questions,
         index,
         nextQuestion,
         checkAnswer,
     } = useGlobalContext();
-    if (waiting) {
-        return <Loader />;
-    }
     if (loading) {
         return <Loader />;
     }
+
     const { question, incorrect_answers, correct_answer } = questions[index];
     let answers = [...incorrect_answers];
     const tempIndex = Math.floor(Math.random() * 4);
-    console.log(tempIndex);
     if (tempIndex === 3) {
-        console.log("in if");
         answers.push(correct_answer);
     } else {
-        console.log("in else");
         answers.push(answers[tempIndex]);
         answers[tempIndex] = correct_answer;
     }

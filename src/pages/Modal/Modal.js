@@ -34,20 +34,24 @@ const useStyles = makeStyles({
     },
 });
 
+
 const Modal = () => {
     const classes = useStyles();
     const { isModalOpen, closeModal, correct, questions } = useGlobalContext();
+    const displayResult = () => {
+        let percentage = ((correct / questions.length) * 100).toFixed(0);
+        if (percentage > 50) return "Extrovert";
+        return "Introvert";
+    }
     return (
         <div
             className={`${isModalOpen ? classes.modalContainer + " " + classes.isOpen : classes.modalContainer
                 }`}
         >
             <div className={classes.modaContent}>
-                <h2>congrats!</h2>
-                <p>
-                    You answered {((correct / questions.length) * 100).toFixed(0)}% of
-                    questions correctly
-                </p>
+                <h2>
+                    Your are {displayResult()}.
+                </h2>
                 <CloseBtn onClick={closeModal}>
                     Play again
                 </CloseBtn>
